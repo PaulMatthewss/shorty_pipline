@@ -1,0 +1,46 @@
+on:
+  push:
+    branches:
+      - main
+      
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
+      - run: python my_test.py
+  formating:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
+      - run: python pip install black
+      - run: python -m black app.py
+      - run: python -m black config.py
+      - run: python -m black check_encode.py
+      - run: python -m black create_table.py
+      - run: python -m black display_list.py
+      - run: python -m black run.py
+      - run: python -m black shorty_api.py
+      - run: python -m black sql_table.py
+  code-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
+      - run: python pip install pylint
+      - run: python -m pylint app.py
+      - run: python -m pylint config.py
+      - run: python -m pylint check_encode.py
+      - run: python -m pylint create_table.py
+      - run: python -m pylint display_list.py
+      - run: python -m pylint run.py
+      - run: python -m pylint shorty_api.py
+      - run: python -m pylint sql_table.py
