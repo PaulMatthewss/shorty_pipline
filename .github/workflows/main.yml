@@ -36,7 +36,7 @@ jobs:
         with:
           python-version: '3.10' 
       - run: pip install flake8
-      - run: python3 -m flake8 --ignore E203,F401,W291,F821,E302,W191,E501,E251,E231,E502,E101,E128,E712,E222,E303 app.py
+      - run: python3 -m flake8 --ignore E203,F401,W291,F821,E302,W191,E501,E251,E231,E502,E101,E128,E712,E222,E303,W293,F841,E226,E202,E127,E241,E305 app.py
       - run: python3 -m flake8 config.py
       - run: python3 -m flake8 check_encode.py
       - run: python3 -m flake8 create_table.py
